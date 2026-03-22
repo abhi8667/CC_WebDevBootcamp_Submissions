@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Abhinandan's To-Do List</title>
+    <style>
+        body {
+            background-color: #2b2b2b;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .box {
+            border: 5px solid #00ff00;
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #444;
+        }
+
+        .my-info {
+            background-color: #555;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px dashed yellow;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: white;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        #task-input {
+            padding: 8px;
+            width: 70%;
+        }
+
+        #add-button {
+            padding: 8px;
+            background-color: #00ff00;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        ul {
+            text-align: left;
+            margin-top: 30px;
+            padding: 0;
+        }
+
+        li {
+            background-color: #666;
+            margin: 5px 0px;
+            padding: 10px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="my-info">
+        <img src="https://api.dicebear.com/7.x/identicon/svg?seed=Dragon" alt="Dragon Avatar" class="profile-pic">
+        <h1>Abhinandan Jaiswal</h1>
+        <p>I am a 1st year Civil Engineering student at RVCE. I really like AI and Machine Learning. This is my first ever JS project!</p>
+    </div>
+
+    <hr>
+
+    <h2>Task Manager</h2>
+    <p><i>Write your tasks below and click Add.</i></p>
+    
+    <input type="text" id="task-input" placeholder="What needs to be done?">
+    <button id="add-button" onclick="addNewTask()">ADD IT!</button>
+
+    <ul id="my-list">
+    </ul>
+</div>
+
+<script>
+    function addNewTask() {
+        var input = document.getElementById("task-input");
+        var val = input.value;
+
+        if (val === "") {
+            alert("You forgot to type something!");
+            return;
+        }
+
+        var list = document.getElementById("my-list");
+        var li = document.createElement("li");
+        
+        li.innerHTML = val + " <button class='delete-btn' onclick='removeThis(this)'>X</button>";
+        
+        list.appendChild(li);
+        input.value = "";
+    }
+
+    function removeThis(button) {
+        var item = button.parentNode;
+        item.parentNode.removeChild(item);
+    }
+</script>
+
+</body>
+</html>
